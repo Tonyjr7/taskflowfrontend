@@ -12,7 +12,7 @@ export default function TasksPage() {
   const [tasks, setTasks] = useState<Task[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
-  const { token, logout } = useAuth()
+  const { token, logout, username } = useAuth()
   const router = useRouter()
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function TasksPage() {
   }
 
   if (loading) {
-    return <div className="flex items-center justify-center min-h-screen">Loading...</div>
+    return <div className="flex items-center justify-center min-h-screen bg-background text-foreground">Loading...</div>
   }
 
   return (
@@ -71,6 +71,7 @@ export default function TasksPage() {
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-900">Tasks</h1>
+          <h2 className="text-3xl font-bold text-gray-900">Hi, {username}</h2> {/* Show username here */}
           <Button variant="ghost" onClick={logout}>
             Sign out
           </Button>
@@ -87,6 +88,5 @@ export default function TasksPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }
-
