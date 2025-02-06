@@ -67,26 +67,31 @@ export default function TasksPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow">
+    <div className="min-h-screen bg-background">
+      <header className="bg-card shadow">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-900">Tasks</h1>
-          <h2 className="text-3xl font-bold text-gray-900">Hi, {username}</h2> {/* Show username here */}
-          <Button variant="ghost" onClick={logout}>
-            Sign out
-          </Button>
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">Tasks</h1>
+            {username && <p className="text-muted-foreground mt-1">Hi, {username}</p>}
+          </div>
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" onClick={logout}>
+              Sign out
+            </Button>
+          </div>
         </div>
       </header>
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
-          <div className="bg-white rounded-lg shadow p-6 mb-8">
-            <h2 className="text-lg font-semibold mb-4">Create New Task</h2>
+          <div className="bg-card rounded-lg shadow p-6 mb-8">
+            <h2 className="text-lg font-semibold mb-4 text-foreground">Create New Task</h2>
             <TaskForm onSubmit={handleCreateTask} />
           </div>
-          {error && <div className="text-red-600 mb-4">{error}</div>}
+          {error && <div className="text-destructive mb-4">{error}</div>}
           <TaskList tasks={tasks} onToggleComplete={handleToggleComplete} onDelete={handleDeleteTask} />
         </div>
       </main>
     </div>
-  );
+  )
 }
+
