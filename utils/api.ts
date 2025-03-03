@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://todoapi-iug7.onrender.com/api"
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://todoapi-9e6k.onrender.com/api"
 
 export interface Task {
   id: number
